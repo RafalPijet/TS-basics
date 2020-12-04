@@ -1,4 +1,5 @@
 import {Exchanger} from "./Exchanger";
+import * as _ from 'lodash';
 
 const initEventListener = () => {
     const btn: HTMLElement | null = document.getElementById("exchange");
@@ -23,7 +24,7 @@ const initEventListener = () => {
                 const exchanger = new Exchanger(getInputValue('gold'), getInputValue('silver'), getInputValue('copper'));
 
                 if (ex !== null) {
-                    ex.innerText = exchanger.toCopper().toString();
+                    ex.innerText = _.padStart(exchanger.toCopper().toString(), 5, '-');
                 } else {
                     throw new Error("Element to show not found");
                 }
